@@ -1,9 +1,12 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../authprovider/Authprovider";
 
 
 const Navbar = () => {
+  const {user,logoutUser}=useContext(AuthContext)
     return (
-        <div className="navbar bg-base-100 sticky z-50">
+        <div className="navbar bg-base-100 top-0 sticky z-50">
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -24,7 +27,7 @@ const Navbar = () => {
         
       </ul>
     </div>
-    <Link to='/' className="btn btn-ghost text-xl lg:text-2xl font-lato"><span><img src="https://i.ibb.co/XWyxF9h/12343867-4962315.jpg" className="w-[70px] h-[60px] mr-0" alt="" /></span> GlamourGlow <br /> Beauty</Link>
+    <Link to='/' className="btn btn-ghost text-xl lg:text-2xl font-lato"><span><img src="https://i.ibb.co/XWyxF9h/12343867-4962315.jpg" className="w-[70px] h-[60px] mr-0 rounded-md mt-0" alt="" /></span> GlamourGlow <br /> Beauty</Link>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
@@ -47,7 +50,25 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
-    <Link to='/login' className="btn bg-purple-600 text-white">Log In </Link>
+  {
+            user? <div className="dropdown dropdown-end flex items-center justify-center">
+              
+                <div title={user?.displayName} className="w-10 rounded-full ">
+                  <img className="flex items-center justify-center rounded-full"  src={user?.photoURL}>
+                  </img>
+                  
+                </div>
+            <button onClick={()=>logoutUser()}  className="btn bg-purple-600 text-white">Sign Out </button>
+            </div>
+            :
+            <Link to='/login'>
+            <button className="btn bg-purple-600 text-white">Login</button>
+            </Link>
+
+          }
+    
+    
+    
   </div>
 </div>
     );

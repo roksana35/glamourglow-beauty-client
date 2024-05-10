@@ -10,6 +10,9 @@ const router=createBrowserRouter ([
         element:<Main></Main>,
         errorElement:<Errorpage></Errorpage>,
         children:[
+            {
+                
+            }
             
         ]
     },
