@@ -5,6 +5,8 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Homepage from "../pages/Homepage";
 import Addservice from "../components/Addservice";
+import Allservice from "../components/Allservice";
+import Detailspage from "../components/Detailspage";
 
 const router=createBrowserRouter ([
     {
@@ -19,9 +21,18 @@ const router=createBrowserRouter ([
             {
                 path:'/addservice',
                 element:<Addservice></Addservice>
+            },
+            {
+                path:'/service/:id',
+                element:<Detailspage></Detailspage>,
+                loader:({params})=>fetch(`http://localhost:5000/services/${params.id}`)
             }
             
         ]
+    },
+    {
+        path:'/allservice',
+        element:<Allservice></Allservice>
     },
     {
         path:'/register',

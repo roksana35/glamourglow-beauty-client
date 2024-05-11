@@ -1,6 +1,7 @@
 import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import app from "../firebase/firebase.config";
+import toast from "react-hot-toast";
 
 export const AuthContext=createContext(null);
 const googleProvider=new GoogleAuthProvider();
@@ -43,6 +44,9 @@ const Authprovider = ({children}) => {
               // User is signed in, see docs for a list of available properties
               // https://firebase.google.com/docs/reference/js/auth.user
               setUser(currentuser);
+              if(user){
+                toast.success('Successfully Login');
+              }
               setLoading(false)
               // ...
             
@@ -58,7 +62,8 @@ const Authprovider = ({children}) => {
             user,setUser,
             loginuser,
             googleSignIn,
-            logoutUser
+            logoutUser,
+            loading
 
 
 

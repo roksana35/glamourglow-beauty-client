@@ -1,24 +1,32 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Slider from "../components/Slider";
 import ServicesCard from "../components/ServicesCard";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../authprovider/Authprovider";
 
 
 const Homepage = () => {
+    const {loading}=useContext(AuthContext);
 
     const[services,setServices]=useState([]);
+    if(loading){
+        return <span className="loading loading-spinner ml-32 lg:ml-96 loading-lg text-center block items-center"></span>
+    }
 
-    useEffect(()=>{
+    
         fetch('http://localhost:5000/services',{
         method:'GET'
     })
     .then(res=>res.json())
     .then(data=>{
         console.log(data)
+        
         setServices(data.slice(0,6))
+        
     })
 
 
-    },[])
+   
     
     return (
         <div className="mt-6">
@@ -33,7 +41,7 @@ const Homepage = () => {
                 
             </div>
             <div className="flex justify-center mt-6">
-            <button className="btn btn-secondary  ">show all</button>
+            <Link to='/allservice' className="btn btn-secondary  ">show all</Link>
 
             </div>
             

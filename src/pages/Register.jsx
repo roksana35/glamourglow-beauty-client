@@ -3,8 +3,10 @@ import Navbar from "../layout/Navbar";
 import Footer from "../layout/Footer";
 import { useContext } from "react";
 import { AuthContext } from "../authprovider/Authprovider";
-import toast from "react-hot-toast";
 
+import { ToastContainer, toast } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
   const navigate=useNavigate();
@@ -75,6 +77,7 @@ const Register = () => {
    <span className="text-white text-center"> Already have an account then <Link to='/login'><button className="text-white font-semibold text-purple-600 ml-3">Login</button></Link></span> 
    
    </div>
+   <ToastContainer />
   
 
  </form>

@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { AuthContext } from "../authprovider/Authprovider";
+import Swal from "sweetalert2";
 
 const Addservice = () => {
     const { user } = useContext(AuthContext);
@@ -27,6 +28,13 @@ const Addservice = () => {
         .then(res => res.json())
         .then(data => {
             console.log(data);
+            if(data.insertedId){
+                Swal.fire({
+                    title: "success",
+                    text: "Sucessfully Added Data in Database",
+                    icon: "success"
+                  });
+            }
         });
     };
 

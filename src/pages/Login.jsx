@@ -1,12 +1,17 @@
 import { Link } from "react-router-dom";
 import Navbar from "../layout/Navbar";
 import Footer from "../layout/Footer";
+
 import { useContext } from "react";
 import { AuthContext } from "../authprovider/Authprovider";
+import { ToastContainer, toast } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Login = () => {
-  const {loginuser,googleSignIn}=useContext(AuthContext);
+ 
+  const {loginuser,googleSignIn,setUser}=useContext(AuthContext);
 
     const handleLogInUser=e=>{
       e.preventDefault();
@@ -18,6 +23,9 @@ const Login = () => {
       .then(res=>{
         const result=res.user 
         console.log(result)
+        toast.success('Successfully Login')
+        
+        setUser(result)
       }).catch((error)=>{
         const errorcode=error.message
         console.log(error.message)
@@ -27,6 +35,7 @@ const Login = () => {
       googleSignIn()
       .then(result=>{
         console.log(result.user)
+        toast.success('Successfully Login')
       }).catch((error)=>{
         const errorcode =error.message;
         console.log(error.message)
@@ -63,6 +72,7 @@ const Login = () => {
    </div>
 
         </div>
+        <ToastContainer />
        
 
       </form>
