@@ -8,6 +8,7 @@ import Addservice from "../components/Addservice";
 import Allservice from "../components/Allservice";
 import Detailspage from "../components/Detailspage";
 
+
 const router=createBrowserRouter ([
     {
         path:'/',
@@ -26,7 +27,8 @@ const router=createBrowserRouter ([
                 path:'/service/:id',
                 element:<Detailspage></Detailspage>,
                 loader:({params})=>fetch(`http://localhost:5000/services/${params.id}`)
-            }
+            },
+            
             
         ]
     },
