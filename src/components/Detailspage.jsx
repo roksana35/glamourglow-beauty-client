@@ -1,26 +1,32 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 import { useLoaderData, } from "react-router-dom";
+import { AuthContext } from "../authprovider/Authprovider";
 // /import { Modal } from "@headlessui/react";
 
 
 const Detailspage = () => {
     const service =useLoaderData();
+    const{user}=useContext(AuthContext);
+
     console.log(service)
-    const {photo,name,description,username,userphoto,price}=service;
+    const {_id,photo,name,description,username,userphoto,useremail,price,serviceArea}=service;
 
-    const [isopen,setIsopen]=useState(false);
-
-    const handleOpenModal=()=>{
-        setIsopen(true)
+    const handlePurchese=event=>{
+      event.preventDefault();
+      const form =event.target;
+      const serviceName=form.serviceName.value;
+      const serviceId=form.serviceId.value;
+      const serviceImage=form.serviceImage.value;
+      const providerName=form.providerName.value;
+      const providerEmail=form.providerEmail.value;
+      const currentUserName=form.currentName.value;
+      const currentUserEmail=form.currentEmail.value;
+      const Date = form.date.value;
+      const address =form.area.value;
+      const status='pending';
+      console.log(serviceName,serviceImage,serviceId,providerName,providerEmail,currentUserName,currentUserEmail,Date,address,status)
     }
-    const handleCloseModal=()=>{
-        setIsopen(false)
-    }
-   
-    // const card=data.find(item=>item._id === id)
-    // console.log(card)
-
    
     return (
         <div>
@@ -42,20 +48,20 @@ const Detailspage = () => {
 <div className="modal" role="dialog">
   <div className="modal-box">
 
-  <form className="card-body p-3">
+  <form onSubmit={handlePurchese} className="card-body p-3">
     {/* service name and image */}
     <div className="flex gap-4">
     <div className="form-control">
           <label className="label">
-            <span className="label-text"> Service Name</span>
+            <span className="label-text"> Service ID</span>
           </label>
-          <input type="text" placeholder="name" className="input input-bordered" required />
+          <input type="text" name="serviceId" value={_id} readOnly placeholder=" Service ID" className="input input-bordered" required />
         </div>
         <div className="form-control">
           <label className="label">
-            <span className="label-text"> Service Image</span>
+            <span className="label-text"> Service Name</span>
           </label>
-          <input type="text" name="image" placeholder=" Service Image" className="input input-bordered" required />
+          <input type="text" name="serviceName" value={name} readOnly placeholder=" Service Name" className="input input-bordered" required />
           
         </div>
 
@@ -66,13 +72,13 @@ const Detailspage = () => {
           <label className="label">
             <span className="label-text"> Provider Name</span>
           </label>
-          <input type="text" name="providername" placeholder="Provider Name" className="input input-bordered" required />
+          <input type="text" name="providerName" value={username} readOnly placeholder="Provider Name" className="input input-bordered" required />
         </div>
         <div className="form-control">
           <label className="label">
             <span className="label-text">Provider Email</span>
           </label>
-          <input type="email" name="Provideremail" placeholder=" Provider Email" className="input input-bordered" required />
+          <input type="email" name="providerEmail" value={useremail} readOnly placeholder=" Provider Email" className="input input-bordered" required />
           
         </div>
 
@@ -83,38 +89,54 @@ const Detailspage = () => {
           <label className="label">
             <span className="label-text">Currentuser Name</span>
           </label>
-          <input type="text" name="currentname" placeholder="Currentuser Name" className="input input-bordered" required />
+          <input type="text" name="currentName" value={user.displayName}  readOnly placeholder="Currentuser Name" className="input input-bordered" required />
         </div>
         <div className="form-control">
           <label className="label">
             <span className="label-text">Currentuser Email</span>
           </label>
-          <input type="email" name="currentemail" placeholder=" Currentuser Email" className="input input-bordered" required />
+          <input type="email" name="currentEmail" value={user.email} readOnly placeholder=" Currentuser Email" className="input input-bordered" required />
           
         </div>
 
     </div>
     {/* date and address */}
-    <div className="flex gap-4">
+    <div className="flex gap-4 justify-center items-center">
     <div className="form-control">
           <label className="label">
             <span className="label-text">Date</span>
           </label>
-          <input type="date" name="date" placeholder="Date" className="input input-bordered" required />
+          <input type="date" name="date"  placeholder="Date" className="input input-bordered" required />
         </div>
         <div className="form-control">
           <label className="label">
             <span className="label-text">Address</span>
           </label>
-          <input type="text" name="address" placeholder=" address" className="input input-bordered" required />
+          <select  className="py-2 lg:px-4 w-full rounded-md text-gray-700 border-2 " name="area" id="area">
+                            <option value="Dhanmondi">Dhanmondi</option>
+                            <option value="Tangail">Tangail</option>
+                            <option value="Uttara">Uttara</option>
+                            <option value="Mirpur 11">Mirpur 11</option>
+                            
+                            
+                        </select>
+
+          {/* <input type="text" name="address" placeholder=" address" className="input input-bordered" required /> */}
           
         </div>
 
     </div>
+    <div className="form-control">
+          <label className="label">
+            <span className="label-text">Service Image</span>
+          </label>
+          <input type="text" name="serviceImage" value={photo} readOnly placeholder=" address" className="input input-bordered" required />
+          
+        </div>
 
       
         <div className="form-control mt-6">
-          <button className="btn btn-primary">Login</button>
+          <button className="btn btn-primary">Purchase</button>
         </div>
       </form>
   </div>
