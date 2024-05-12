@@ -50,6 +50,7 @@ const Detailspage = () => {
     <h2 className="card-title"><span>Service Name:</span>
       {name}</h2>
       <p><span className="font-lato font-semibold"> Price:</span>{price}</p>
+      <p><span className="font-lato font-semibold"> Service Area: </span>{serviceArea}</p>
       <p><span className="font-lato font-semibold">Service Provider Name:</span>{username}</p>
       <p><span className="font-lato font-semibold">Service Provider Image:</span><img className="w-[50px] rounded-md" src={userphoto}></img></p>
     <p><span className="font-lato font-semibold">Description:</span>{description}</p>

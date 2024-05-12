@@ -9,6 +9,7 @@ import Allservice from "../components/Allservice";
 import Detailspage from "../components/Detailspage";
 import PrivateRoute from "../components/PrivateRoute";
 import ManageService from "../components/ManageService";
+import UpdateService from "../components/UpdateService";
 
 
 const router=createBrowserRouter ([
@@ -37,6 +38,11 @@ const router=createBrowserRouter ([
             {
                 path:'/manageservice',
                 element:<PrivateRoute><ManageService></ManageService></PrivateRoute>
+            },
+            {
+                path:'/update/:id',
+                element:<UpdateService></UpdateService>,
+                loader:({params})=>fetch(`http://localhost:5000/services/${params.id}`)
             }
             
             

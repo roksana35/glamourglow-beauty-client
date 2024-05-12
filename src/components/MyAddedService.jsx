@@ -1,9 +1,12 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const MyAddedService = ({ data, managedata, setManagedata }) => {
+
+    const [deletedItem,setDeletedItem]=useState(false);
   const {
-    _id,name,photo,price,description,username,userphoto,
+    _id,name,photo,price,description,username,useremail,userphoto,
   } = data;
 
   const handleDelete=id=>{
@@ -18,15 +21,32 @@ const MyAddedService = ({ data, managedata, setManagedata }) => {
         confirmButtonText: "Yes, delete it!"
       }).then((result) => {
         if (result.isConfirmed) {
-        //   Swal.fire({
-        //     title: "Deleted!",
-        //     text: "Your file has been deleted.",
-        //     icon: "success"
-        //   });
+            fetch(`http://localhost:5000/delete/${id}`,{
+                method:'DELETE',
+                
+            })
+            .then(res=>res.json())
+            .then(data=> {
+                console.log(data)
+                if(data.deletedCount>0){
+                    Swal.fire({
+                            title: "Deleted!",
+                            text: "Your service has been deleted.",
+                            icon: "success"
+                          });
+                          setDeletedItem(!deletedItem)
+                          const remaning=managedata.filter(i=>i._id !== id)
+                          setManagedata(remaning)
+
+                }
+            })
+        //  
         }
       });
 
   }
+
+  
 
   return (
     <div className="card lg:card-side lg:h-[330px] bg-base-100 shadow-xl">
@@ -40,8 +60,12 @@ const MyAddedService = ({ data, managedata, setManagedata }) => {
             
     <div className="card-actions ">
         <Link to={`/service/${_id}`} className="btn btn-secondary">View Details</Link>
-        <button className="btn btn-primary">Update</button>
-        <button className="btn btn-primary">Delete</button>
+        {/* update btn */}
+       <Link to={`/update/${_id}`} className="btn btn-primary"><>Update</></Link>
+
+
+        {/* delete btn  */}
+        <button onClick={()=>handleDelete(_id)} className="btn btn-primary">Delete</button>
     </div>
     </div>
 </div>
