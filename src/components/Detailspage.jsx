@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 
 import { useLoaderData, } from "react-router-dom";
 import { AuthContext } from "../authprovider/Authprovider";
+import { Helmet } from "react-helmet-async";
 // /import { Modal } from "@headlessui/react";
 
 
@@ -28,7 +29,7 @@ const Detailspage = () => {
       const status='pending';
       console.log(serviceName,serviceImage,serviceId,providerName,providerEmail,currentUserName,currentUserEmail,Date,address,status)
       const purchaseInf={serviceName,serviceImage,serviceId,providerName,providerEmail,currentUserName,currentUserEmail,Date,address,status}
-      fetch('http://localhost:5000/purchase',{
+      fetch('https://beauty-and-grooming-server.vercel.app/purchase',{
         method:'POST',
         headers:{
           'content-type':'application/json'
@@ -37,13 +38,17 @@ const Detailspage = () => {
       })
       .then(res =>res.json())
       .then(data=>{
-        console.log(data)
+        // console.log(data)
+        const purchase=data;
 
       })
     }
    
     return (
         <div>
+          <Helmet>
+            <title>Details Page</title>
+          </Helmet>
             <div className="card lg:w-[800px] bg-base-100 shadow-xl mt-5 mx-auto">
   <figure><img className=" rounded-md w-[300px] h-[250px] lg:w-[500px] lg:h-[400px]" src={photo} alt="Shoes" /></figure>
   <div className="card-body">

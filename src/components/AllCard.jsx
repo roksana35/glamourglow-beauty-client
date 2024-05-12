@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 
 
@@ -5,6 +6,9 @@ const AllCard = ({service}) => {
     const {_id,name,photo,price,description,username,userphoto}=service;
     return (
         <div className="card lg:card-side bg-base-100 shadow-xl lg:mb-10">
+            <Helmet>
+                <title>Service Page</title>
+            </Helmet>
         <figure><img src={photo} className="w-[350px] h-[300px]  p-2 lg:p-4 rounded-lg" alt="Album"/></figure>
         <div className="card-body lg:ml-2 lg:mt-5 lg:p-4  ">
         <h2 className="text-xl font-lato font-bold inline-block">Service Name:{name}</h2>

@@ -3,6 +3,7 @@ import Slider from "../components/Slider";
 import ServicesCard from "../components/ServicesCard";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../authprovider/Authprovider";
+import { Helmet } from "react-helmet-async";
 
 
 const Homepage = () => {
@@ -14,7 +15,7 @@ const Homepage = () => {
     }
 
     
-        fetch('http://localhost:5000/services',{
+        fetch('https://beauty-and-grooming-server.vercel.app/services',{
         method:'GET'
     })
     .then(res=>res.json())
@@ -30,6 +31,9 @@ const Homepage = () => {
     
     return (
         <div className="mt-6">
+            <Helmet>
+                <title>Home Page </title>
+            </Helmet>
             <Slider></Slider>
             <p>service:{services.length}</p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">

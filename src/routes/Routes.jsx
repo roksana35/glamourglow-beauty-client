@@ -29,7 +29,7 @@ const router=createBrowserRouter ([
             {
                 path:'/service/:id',
                 element:<PrivateRoute><Detailspage></Detailspage></PrivateRoute>,
-                loader:({params})=>fetch(`http://localhost:5000/services/${params.id}`)
+                loader:({params})=>fetch(`https://beauty-and-grooming-server.vercel.app/services/${params.id}`)
             },
             {
                 path:'/service',
@@ -42,7 +42,7 @@ const router=createBrowserRouter ([
             {
                 path:'/update/:id',
                 element:<UpdateService></UpdateService>,
-                loader:({params})=>fetch(`http://localhost:5000/services/${params.id}`)
+                loader:({params})=>fetch(`https://beauty-and-grooming-server.vercel.app/services/${params.id}`)
             }
             
             

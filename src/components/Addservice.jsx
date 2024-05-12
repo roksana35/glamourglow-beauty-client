@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../authprovider/Authprovider";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const Addservice = () => {
     const { user } = useContext(AuthContext);
@@ -18,7 +19,7 @@ const Addservice = () => {
         const userphoto=user?.photoURL;
         const addService = { name, price, serviceArea, photo, description, username, useremail,userphoto };
 
-        fetch('http://localhost:5000/services', {
+        fetch('https://beauty-and-grooming-server.vercel.app/services', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -27,7 +28,7 @@ const Addservice = () => {
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data);
+            // console.log(data);
             if(data.insertedId){
                 Swal.fire({
                     title: "success",
@@ -40,6 +41,9 @@ const Addservice = () => {
 
     return (
         <div className="min-h-screen bg-cover mt-4 rounded-xl bg-center flex items-center justify-center" style={{backgroundImage: "url('https://i.ibb.co/TLf4NSL/ecofriendly-beauty-product.jpg')"}}>
+            <Helmet>
+                <title>Add Service</title>
+            </Helmet>
             <form onSubmit={handleAddService} className="p-3 lg:p-8 border-r-emerald-500 border text-white">
                 <div className="md:flex mb-1 md:gap-3">
                 <div className="form-control md:w-1/2">

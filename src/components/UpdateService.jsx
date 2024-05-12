@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 
@@ -20,7 +21,7 @@ const UpdateService = () => {
         const address=form.area.value;
         console.log(serviceImage,serviceName,providerEmail,providerName,price,date,address)
         const updateData={serviceImage,serviceName,providerEmail,providerName,price,date,address}
-        fetch(`http://localhost:5000/update/${_id}`,{
+        fetch(`https://beauty-and-grooming-server.vercel.app/update/${_id}`,{
             method:'PUT',
             headers:{
                 'content-type':'application/json'
@@ -29,7 +30,7 @@ const UpdateService = () => {
         })
         .then(res=>res.json())
         .then(data=>{
-            console.log(data)
+            // console.log(data)
             if(data?.modifiedCount>0){
                 Swal.fire({
                     title: 'Success!',
@@ -47,6 +48,9 @@ const UpdateService = () => {
       }
     return (
         <div>
+          <Helmet>
+            <title>Update Service </title>
+          </Helmet>
             <form onSubmit={handleUpdate} className="card-body p-3 lg:w-[600px] mx-auto">
     {/* service name and image */}
     <div className="flex gap-4">

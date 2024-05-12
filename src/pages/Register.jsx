@@ -7,6 +7,7 @@ import { AuthContext } from "../authprovider/Authprovider";
 import { ToastContainer, toast } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
+import { Helmet } from "react-helmet-async";
 
 const Register = () => {
   const navigate=useNavigate();
@@ -18,10 +19,10 @@ const Register = () => {
     const email=form.email.value;
     const photo=form.photo.value;
     const pass=form.password.value;
-    console.log(name,email,photo,pass)
+    // console.log(name,email,photo,pass)
     try{
      const result=await createuser(email,pass)
-    console.log(result)
+    // console.log(result)
     await updateuser(name,photo)
     setUser({...user,displayName:name,photoUrl:photo})
       toast.success('Signup Successfully')
@@ -29,7 +30,7 @@ const Register = () => {
 
 
     }catch(err){
-      console.log(err.message)
+      // console.log(err.message)
       toast.error(err?.message)
     }
     
@@ -40,6 +41,9 @@ const Register = () => {
     return (
 
       <div>
+        <Helmet>
+          <title>Register Page</title>
+        </Helmet>
         <Navbar></Navbar>
         <div className="min-h-screen bg-cover mt-4 p-4 rounded-xl bg-center flex items-center justify-center" style={{backgroundImage: "url('https://i.ibb.co/ScvD5wm/beautiful-scenery-summit-mount-everest-covered-with-snow-white-clouds.jpg')"}}>
         {/* <div className="bg-white p-8 rounded-lg shadow-lg"></div> */}

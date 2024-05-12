@@ -12,12 +12,12 @@ const Allservice = () => {
     }
     
    
-        fetch('http://localhost:5000/services',{
+        fetch('https://beauty-and-grooming-server.vercel.app/services',{
             method:'GET'
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 setServices(data);
             })
             

@@ -7,6 +7,7 @@ import { AuthContext } from "../authprovider/Authprovider";
 import { ToastContainer, toast } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
+import { Helmet } from "react-helmet-async";
 
 
 const Login = () => {
@@ -18,34 +19,37 @@ const Login = () => {
       const form =e.target;
       const email= form.email.value;
       const pass=form.password.value;
-      console.log(email,pass)
+      // console.log(email,pass)
       loginuser(email,pass)
       .then(res=>{
         const result=res.user 
-        console.log(result)
+        // console.log(result)
         toast.success('Successfully Login')
         navigate(location?.state?location.state:'/')
         
         setUser(result)
       }).catch((error)=>{
         const errorcode=error.message
-        console.log(error.message)
+        // console.log(error.message)
       })
     }
     const handlegoogleSignIn=()=>{
       googleSignIn()
       .then(result=>{
-        console.log(result.user)
+        // console.log(result.user)
         toast.success('Successfully Login')
       }).catch((error)=>{
         const errorcode =error.message;
-        console.log(error.message)
+        // console.log(error.message)
       })
     }
 
 
     return (
       <div>
+        <Helmet>
+          <title>Login Page</title>
+        </Helmet>
         <Navbar></Navbar>
         <div className="min-h-screen bg-cover mt-4 p-4 rounded-xl bg-center flex items-center justify-center" style={{backgroundImage: "url('https://i.ibb.co/ScvD5wm/beautiful-scenery-summit-mount-everest-covered-with-snow-white-clouds.jpg')"}}>
              {/* <div className="bg-white p-8 rounded-lg shadow-lg"></div> */}
