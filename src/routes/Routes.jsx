@@ -10,6 +10,7 @@ import Detailspage from "../components/Detailspage";
 import PrivateRoute from "../components/PrivateRoute";
 import ManageService from "../components/ManageService";
 import UpdateService from "../components/UpdateService";
+import BookingService from "../components/BookingService";
 
 
 const router=createBrowserRouter ([
@@ -43,6 +44,10 @@ const router=createBrowserRouter ([
                 path:'/update/:id',
                 element:<UpdateService></UpdateService>,
                 loader:({params})=>fetch(`https://beauty-and-grooming-server.vercel.app/services/${params.id}`)
+            }
+            ,{
+                path:'/booking',
+                element:<BookingService></BookingService>
             }
             
             
