@@ -6,6 +6,7 @@ import { AuthContext } from "../authprovider/Authprovider";
 
 
 const Detailspage = () => {
+  
     const service =useLoaderData();
     const{user}=useContext(AuthContext);
 
@@ -20,12 +21,25 @@ const Detailspage = () => {
       const serviceImage=form.serviceImage.value;
       const providerName=form.providerName.value;
       const providerEmail=form.providerEmail.value;
-      const currentUserName=form.currentName.value;
-      const currentUserEmail=form.currentEmail.value;
+      const currentUserName=user?.displayName;
+      const currentUserEmail=user?.email;
       const Date = form.date.value;
       const address =form.area.value;
       const status='pending';
       console.log(serviceName,serviceImage,serviceId,providerName,providerEmail,currentUserName,currentUserEmail,Date,address,status)
+      const purchaseInf={serviceName,serviceImage,serviceId,providerName,providerEmail,currentUserName,currentUserEmail,Date,address,status}
+      fetch('http://localhost:5000/purchase',{
+        method:'POST',
+        headers:{
+          'content-type':'application/json'
+        },
+        body:JSON.stringify(purchaseInf)
+      })
+      .then(res =>res.json())
+      .then(data=>{
+        console.log(data)
+
+      })
     }
    
     return (
@@ -89,13 +103,13 @@ const Detailspage = () => {
           <label className="label">
             <span className="label-text">Currentuser Name</span>
           </label>
-          <input type="text" name="currentName" value={user.displayName}  readOnly placeholder="Currentuser Name" className="input input-bordered" required />
+          <input type="text" name="currentName" value={user?.displayName}  readOnly placeholder="Currentuser Name" className="input input-bordered" required />
         </div>
         <div className="form-control">
           <label className="label">
             <span className="label-text">Currentuser Email</span>
           </label>
-          <input type="email" name="currentEmail" value={user.email} readOnly placeholder=" Currentuser Email" className="input input-bordered" required />
+          <input type="email" name="currentEmail" value={user?.email} readOnly placeholder=" Currentuser Email" className="input input-bordered" required />
           
         </div>
 

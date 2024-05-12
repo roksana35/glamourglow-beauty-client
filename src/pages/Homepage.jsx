@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import Slider from "../components/Slider";
 import ServicesCard from "../components/ServicesCard";
 import { Link } from "react-router-dom";
@@ -19,7 +19,7 @@ const Homepage = () => {
     })
     .then(res=>res.json())
     .then(data=>{
-        console.log(data)
+        // console.log(data)
         
         setServices(data.slice(0,6))
         
@@ -41,7 +41,7 @@ const Homepage = () => {
                 
             </div>
             <div className="flex justify-center mt-6">
-            <Link to='/allservice' className="btn btn-secondary  ">show all</Link>
+            <Link to='/service' className="btn btn-secondary  ">show all</Link>
 
             </div>
             

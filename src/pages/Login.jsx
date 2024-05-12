@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../layout/Navbar";
 import Footer from "../layout/Footer";
 
@@ -10,7 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 const Login = () => {
- 
+      const navigate=useNavigate()
   const {loginuser,googleSignIn,setUser}=useContext(AuthContext);
 
     const handleLogInUser=e=>{
@@ -24,6 +24,7 @@ const Login = () => {
         const result=res.user 
         console.log(result)
         toast.success('Successfully Login')
+        navigate(location?.state?location.state:'/')
         
         setUser(result)
       }).catch((error)=>{

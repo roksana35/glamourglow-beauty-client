@@ -7,6 +7,8 @@ import Homepage from "../pages/Homepage";
 import Addservice from "../components/Addservice";
 import Allservice from "../components/Allservice";
 import Detailspage from "../components/Detailspage";
+import PrivateRoute from "../components/PrivateRoute";
+import ManageService from "../components/ManageService";
 
 
 const router=createBrowserRouter ([
@@ -25,17 +27,22 @@ const router=createBrowserRouter ([
             },
             {
                 path:'/service/:id',
-                element:<Detailspage></Detailspage>,
+                element:<PrivateRoute><Detailspage></Detailspage></PrivateRoute>,
                 loader:({params})=>fetch(`http://localhost:5000/services/${params.id}`)
             },
+            {
+                path:'/service',
+                element:<Allservice></Allservice>
+            },
+            {
+                path:'/manageservice',
+                element:<PrivateRoute><ManageService></ManageService></PrivateRoute>
+            }
             
             
         ]
     },
-    {
-        path:'/allservice',
-        element:<Allservice></Allservice>
-    },
+    
     {
         path:'/register',
         element:<Register></Register>
