@@ -11,7 +11,7 @@ import { Helmet } from "react-helmet-async";
 
 const Register = () => {
   const navigate=useNavigate();
-  const {createuser,user,setUser,updateuser}=useContext(AuthContext);
+  const {createuser,user,setUser,updateuser,googleSignIn}=useContext(AuthContext);
   const handlesignup=async(e)=>{
     e.preventDefault();
     const form=e.target;
@@ -34,6 +34,16 @@ const Register = () => {
       toast.error(err?.message)
     }
     
+  }
+  const handlegoogleSignIn=()=>{
+    googleSignIn()
+    .then(result=>{
+      // console.log(result.user)
+      toast.success('Successfully Login')
+    }).catch((error)=>{
+      const errorcode =error.message;
+      // console.log(error.message)
+    })
   }
 
 
@@ -79,7 +89,9 @@ const Register = () => {
    </div>
    <div className="text-center mt-3 ">
    <span className="text-white text-center"> Already have an account then <Link to='/login'><button className="text-white font-semibold text-purple-600 ml-3">Login</button></Link></span> 
-   
+   <div className=" p-2 lg:ml-7 mx-auto">
+      <button onClick={handlegoogleSignIn}  className="btn btn-outline border-2 text-white border-purple-800 mx-auto"> Continue with Google</button>
+   </div>
    </div>
    <ToastContainer />
   

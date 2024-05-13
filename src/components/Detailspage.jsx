@@ -70,7 +70,7 @@ const Detailspage = () => {
 
   <form onSubmit={handlePurchese} className="card-body p-3">
     {/* service name and image */}
-    <div className="flex gap-4">
+    <div className="md:flex gap-4">
     <div className="form-control">
           <label className="label">
             <span className="label-text"> Service ID</span>
@@ -87,7 +87,7 @@ const Detailspage = () => {
 
     </div>
     {/* provider name and email */}
-    <div className="flex gap-4">
+    <div className="md:flex gap-4">
     <div className="form-control">
           <label className="label">
             <span className="label-text"> Provider Name</span>
@@ -104,7 +104,7 @@ const Detailspage = () => {
 
     </div>
     {/* current user name and email */}
-    <div className="flex gap-4">
+    <div className="md:flex gap-4">
     <div className="form-control">
           <label className="label">
             <span className="label-text">Currentuser Name</span>
@@ -121,7 +121,7 @@ const Detailspage = () => {
 
     </div>
     {/* date and address */}
-    <div className="flex gap-4 justify-center items-center">
+    <div className="md:flex gap-4 justify-center items-center">
     <div className="form-control">
           <label className="label">
             <span className="label-text">Date</span>

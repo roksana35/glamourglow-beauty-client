@@ -4,7 +4,7 @@ import { useState } from "react";
 const BookedCard = ({booked}) => {
     const {Date,_id,address,currentUserName,currentUserEmail,providerEmail,providerName,serviceImage,serviceName,status}=booked;
     return (
-        <div className="card  bg-orange-100 shadow-xl">
+        <div className="card  bg-base-100 shadow-xl">
         <figure><img src={serviceImage} className="w-[360px] h-[250px] lg:w-[450px] lg:h-[300px] mt-2 rounded-md" alt="Shoes" /></figure>
         <div className="card-body">
           <h2 className="card-title">
@@ -24,10 +24,7 @@ const BookedCard = ({booked}) => {
             <p><span className="font-lato font-semibold mr-1">CurrentUserName:</span>{currentUserName}</p>
             <p> <span className="font-lato font-semibold mr-1">CurrentUserEmail</span>{currentUserEmail}</p>
           </div>
-          <div className="card-actions justify-end">
-            <div className="badge badge-outline">Fashion</div> 
-            <div className="badge badge-outline">Products</div>
-          </div>
+          
         </div>
       </div>
     );

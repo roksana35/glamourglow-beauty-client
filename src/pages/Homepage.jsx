@@ -35,8 +35,13 @@ const Homepage = () => {
                 <title>Home Page </title>
             </Helmet>
             <Slider></Slider>
-            <p>service:{services.length}</p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
+            <div className="text-center mt-4">
+            <p className="text-3xl font-lato font-extrabold">Our <span className="bg-gradient-to-r from-orange-800 to-purple-800 text-transparent bg-clip-text font-bold">Services</span></p>
+            <p>Grooming is more than just an outward presentation; it's a holistic practice embodying self-respect, <br /> attention to detail,  and personal refinement. It's the art of nurturing oneself, both physically and mentally, <br /> to radiate confidence and poise. </p>
+
+            </div>
+            
+            <div className="grid grid-cols-1 mt-5 md:grid-cols-2 gap-4 md:gap-8">
                 
                 {
                     services.map(service=><ServicesCard key={service._id} service={service}></ServicesCard>)

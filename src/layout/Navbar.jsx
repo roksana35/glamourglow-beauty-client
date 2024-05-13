@@ -5,7 +5,7 @@ import { AuthContext } from "../authprovider/Authprovider";
 
 const Navbar = () => {
   const {user,logoutUser}=useContext(AuthContext);
-  const [theme,setTheme]=useState(true);
+  const [theme,setTheme]=useState(localStorage.getItem('theme') || ("light"));
   useEffect(()=>{
     localStorage.setItem('theme',theme);
     const localTheme=localStorage.getItem('theme');
@@ -22,7 +22,7 @@ const Navbar = () => {
   }
 
     return (
-        <div className="navbar bg-base-100 top-0 sticky z-50">
+        <div className="navbar bg-base-100 top-0 h-[78px] sticky z-50">
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -43,7 +43,7 @@ const Navbar = () => {
         
       </ul>
     </div>
-    <Link to='/' className="btn btn-ghost text-xl lg:text-2xl font-lato"><span><img src="https://i.ibb.co/XWyxF9h/12343867-4962315.jpg" className="w-[70px] h-[60px] mr-0 rounded-md mt-0" alt="" /></span> GlamourGlow <br /> Beauty</Link>
+    <Link to='/' className="btn btn-ghost text-xl lg:text-2xl font-lato"><span><img src="https://i.ibb.co/XWyxF9h/12343867-4962315.jpg" className="w-[70px] h-[60px] mr-0 rounded-md mt-0 " alt="" /></span> GlamourGlow <br /> Beauty</Link>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
