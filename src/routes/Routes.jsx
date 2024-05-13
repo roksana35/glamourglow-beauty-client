@@ -11,6 +11,8 @@ import PrivateRoute from "../components/PrivateRoute";
 import ManageService from "../components/ManageService";
 import UpdateService from "../components/UpdateService";
 import BookingService from "../components/BookingService";
+import Todo from "../components/Todo";
+
 
 
 const router=createBrowserRouter ([
@@ -49,6 +51,10 @@ const router=createBrowserRouter ([
                 path:'/booking',
                 element:<BookingService></BookingService>
             }
+            ,{
+                path:'/todo',
+                element:<Todo></Todo>
+            },
             
             
         ]

@@ -11,7 +11,7 @@ const Detailspage = () => {
     const service =useLoaderData();
     const{user}=useContext(AuthContext);
 
-    console.log(service)
+    // console.log(service)
     const {_id,photo,name,description,username,userphoto,useremail,price,serviceArea}=service;
 
     const handlePurchese=event=>{
@@ -27,7 +27,7 @@ const Detailspage = () => {
       const Date = form.date.value;
       const address =form.area.value;
       const status='pending';
-      console.log(serviceName,serviceImage,serviceId,providerName,providerEmail,currentUserName,currentUserEmail,Date,address,status)
+      // console.log(serviceName,serviceImage,serviceId,providerName,providerEmail,currentUserName,currentUserEmail,Date,address,status)
       const purchaseInf={serviceName,serviceImage,serviceId,providerName,providerEmail,currentUserName,currentUserEmail,Date,address,status}
       fetch('https://beauty-and-grooming-server.vercel.app/purchase',{
         method:'POST',

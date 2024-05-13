@@ -26,7 +26,7 @@ const Allservice = () => {
 
     return (
         <div>
-            <div className="lg:w-[700px] mx-auto">
+            <div className="lg:w-[700px] mb-3 mx-auto">
         {
             services.map(service=><AllCard key={service._id} service={service}></AllCard>)
         }

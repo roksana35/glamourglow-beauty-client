@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const AllCard = ({service}) => {
     const {_id,name,photo,price,description,username,userphoto}=service;
     return (
-        <div className="card lg:card-side bg-base-100 shadow-xl lg:mb-10">
+        <div className="card lg:card-side bg-base-100 shadow-xl mb-3 lg:mb-10">
             <Helmet>
                 <title>Service Page</title>
             </Helmet>
