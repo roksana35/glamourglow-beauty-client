@@ -5,7 +5,7 @@ const ServicesCard = ({service}) => {
     const {_id,name,photo,price,description,username,userphoto}=service;
     return (
         <div className="card lg:card-side lg:h-[330px] bg-base-100 shadow-xl">
-        <figure><img src={photo} className="w-[500px] h-[300px]  p-2 lg:p-4 rounded-lg" alt="Album"/></figure>
+        <figure><img src={photo} className="w-[500px] h-[300px] hover:scale-105 transition-transform duration-300 p-2 lg:p-4 rounded-lg" alt="Album"/></figure>
         <div className="card-body lg:ml-2 lg:mt-5 lg:p-4  ">
         <h2 className="text-xl font-lato font-bold inline-block">Service Name:{name}</h2>
         <p ><span className="font-lato font-semibold" >Price:</span>{price}</p>

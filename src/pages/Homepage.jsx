@@ -4,6 +4,7 @@ import ServicesCard from "../components/ServicesCard";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../authprovider/Authprovider";
 import { Helmet } from "react-helmet-async";
+import About from "../components/About";
 
 
 const Homepage = () => {
@@ -52,6 +53,9 @@ const Homepage = () => {
             <div className="flex justify-center mt-6">
             <Link to='/service' className="btn btn-secondary  ">show all</Link>
 
+            </div>
+            <div className="mt-5 mb-4">
+                <About></About>
             </div>
             
             
