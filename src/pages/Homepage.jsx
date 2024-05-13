@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../authprovider/Authprovider";
 import { Helmet } from "react-helmet-async";
 import About from "../components/About";
+import ExtraSection from "../components/ExtraSection";
 
 
 const Homepage = () => {
@@ -56,6 +57,9 @@ const Homepage = () => {
             </div>
             <div className="mt-5 mb-4">
                 <About></About>
+            </div>
+            <div>
+                <ExtraSection></ExtraSection>
             </div>
             
             
