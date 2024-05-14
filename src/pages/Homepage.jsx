@@ -6,6 +6,7 @@ import { AuthContext } from "../authprovider/Authprovider";
 import { Helmet } from "react-helmet-async";
 import About from "../components/About";
 import ExtraSection from "../components/ExtraSection";
+import Extrasection2 from "../components/Extrasection2";
 
 
 const Homepage = () => {
@@ -60,6 +61,9 @@ const Homepage = () => {
             <div>
                 <ExtraSection></ExtraSection>
             </div>
+            <div className=" mt-5 md:mt-10">
+                <Extrasection2></Extrasection2>
+                </div>
             
             
         </div>

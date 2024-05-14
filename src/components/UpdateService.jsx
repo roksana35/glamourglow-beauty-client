@@ -19,7 +19,7 @@ const UpdateService = () => {
         const serviceImage=form.serviceImage.value;
         const date=form.date.value;
         const address=form.area.value;
-        console.log(serviceImage,serviceName,providerEmail,providerName,price,date,address)
+        // console.log(serviceImage,serviceName,providerEmail,providerName,price,date,address)
         const updateData={serviceImage,serviceName,providerEmail,providerName,price,date,address}
         fetch(`https://beauty-and-grooming-server.vercel.app/update/${_id}`,{
             method:'PUT',
