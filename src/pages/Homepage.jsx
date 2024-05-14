@@ -9,12 +9,9 @@ import ExtraSection from "../components/ExtraSection";
 
 
 const Homepage = () => {
-    const {loading}=useContext(AuthContext);
-
+    const [loading,setLoading]=useState(true);
     const[services,setServices]=useState([]);
-    if(loading){
-        return <span className="loading loading-spinner ml-32 lg:ml-96 loading-lg text-center block items-center"></span>
-    }
+    
 
     
         fetch('https://beauty-and-grooming-server.vercel.app/services',{
@@ -25,6 +22,7 @@ const Homepage = () => {
         // console.log(data)
         
         setServices(data.slice(0,6))
+        setLoading(false)
         
     })
 
@@ -42,15 +40,16 @@ const Homepage = () => {
             <p>Grooming is more than just an outward presentation; it's a holistic practice embodying self-respect, <br /> attention to detail,  and personal refinement. It's the art of nurturing oneself, both physically and mentally, <br /> to radiate confidence and poise. </p>
 
             </div>
-            
-            <div className="grid grid-cols-1 mt-5 md:grid-cols-2 gap-4 md:gap-8">
+            {
+                    loading?(<span className="loading loading-spinner ml-32 lg:ml-96 block justify-center loading-lg text-center  items-center"></span>):(<div className="grid grid-cols-1 mt-5 md:grid-cols-2 gap-4 md:gap-8">
                 
-                {
-                    services.map(service=><ServicesCard key={service._id} service={service}></ServicesCard>)
+                    {
+                            services.map(service=><ServicesCard key={service._id} service={service}></ServicesCard>)
+                        } 
+                </div>)
                 }
-
-                
-            </div>
+            
+            
             <div className="flex justify-center mt-6">
             <Link to='/service' className="btn btn-secondary  ">show all</Link>
 

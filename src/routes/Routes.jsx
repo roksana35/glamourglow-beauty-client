@@ -53,7 +53,7 @@ const router=createBrowserRouter ([
             }
             ,{
                 path:'/todo',
-                element:<Todo></Todo>
+                element:<PrivateRoute><Todo></Todo></PrivateRoute>
             },
             
             

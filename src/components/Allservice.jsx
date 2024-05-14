@@ -4,12 +4,10 @@ import { AuthContext } from "../authprovider/Authprovider";
 
 
 const Allservice = () => {
-    const {loading}=useContext(AuthContext)
+    const [loading,setLoading]=useState(true);
         
     const[services,setServices]=useState([]);
-    if(loading){
-        return <span className="loading loading-spinner ml-32 lg:ml-96 block justify-center loading-lg text-center  items-center"></span>
-    }
+    
     
    
         fetch('https://beauty-and-grooming-server.vercel.app/services',{
@@ -19,6 +17,7 @@ const Allservice = () => {
             .then(data => {
                 // console.log(data);
                 setServices(data);
+                setLoading(false)
             })
             
     
@@ -26,11 +25,16 @@ const Allservice = () => {
 
     return (
         <div>
-            <div className="lg:w-[700px] mb-3 mx-auto">
+            {loading?( <span className="loading loading-spinner ml-32 mx-auto lg:ml-96 block justify-center loading-lg text-center  items-center"></span>):( <div className="lg:w-[700px] mb-3 mx-auto">
         {
             services.map(service=><AllCard key={service._id} service={service}></AllCard>)
         }
-        </div>
+        </div> )}
+            {/* <div className="lg:w-[700px] mb-3 mx-auto">
+        {
+            services.map(service=><AllCard key={service._id} service={service}></AllCard>)
+        }
+        </div> */}
 
         </div>
         
