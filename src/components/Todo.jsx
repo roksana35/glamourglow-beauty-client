@@ -13,7 +13,7 @@ const Todo = () => {
 
     useEffect(() => {
         
-            fetch(`http://localhost:5000/purchase/${user?.email}`)
+            fetch(`https://beauty-and-grooming-server.vercel.app/purchase/${user?.email}`)
                 .then(res => res.json())
                 .then(data => {
                     setAllbooking(data);
@@ -29,7 +29,7 @@ const Todo = () => {
     const handleStatus = id => {
         const status = document.getElementById(`status_${id}`).value;
 
-        fetch(`http://localhost:5000/updatestatus/${id}`, {
+        fetch(`https://beauty-and-grooming-server.vercel.app/updatestatus/${id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'
