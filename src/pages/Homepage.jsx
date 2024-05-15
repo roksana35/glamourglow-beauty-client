@@ -58,12 +58,18 @@ const Homepage = () => {
             <div className="mt-5 mb-4">
                 <About></About>
             </div>
-            <div>
-                <ExtraSection></ExtraSection>
-            </div>
+            <div className="mt-5 md:mt-24">
+                <p className="font-lato text-center text-3xl "><span className="font-extrabold text-transparent bg-gradient-to-r from-pink-600 to-fuchsia-900 bg-clip-text">Our Products</span></p>
+                <p className="text-center  mt-3 md:text-xl">Discover our product section—a haven for self-care and beauty. <br /> Explore skincare,  haircare, cosmetics, and grooming essentials handpicked to elevate your routine. <br /> From serums to makeup, each item is chosen to enhance your beauty journey.</p>
             <div className=" mt-5 md:mt-10">
                 <Extrasection2></Extrasection2>
                 </div>
+
+            </div>
+            <div>
+                <ExtraSection></ExtraSection>
+            </div>
+            
             
             
         </div>
