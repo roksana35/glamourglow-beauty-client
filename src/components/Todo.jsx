@@ -17,15 +17,7 @@ const Todo = () => {
                 .then(res => res.json())
                 .then(data => {
                     setAllbooking(data);
-                    // Check if any booking's providerEmail matches the logged-in user's email
-                const hasAccess = data.some(booking => {
-                    const match = booking.providerEmail === user.email;
-                    console.log('User email:', user.email);
-                    console.log('Provider email:', booking.providerEmail);
-                    console.log('Has access:', match);
-                    return match;
-                });
-                setCanAccessTable(hasAccess);
+                 
                 })
                 .catch(error => {
                     console.error('Error fetching data:', error);
@@ -64,7 +56,7 @@ const Todo = () => {
                 <title>Service-To-Do</title>
             </Helmet>
             
-            {canAccessTable ? (
+            {allbooking.length>0 ? (
                 <div>
                 <div className=" overflow-x-auto hidden md:block">
             

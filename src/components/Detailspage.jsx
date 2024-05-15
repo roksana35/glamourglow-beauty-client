@@ -21,8 +21,8 @@ const Detailspage = () => {
       const serviceName=form.serviceName.value;
       const serviceId=form.serviceId.value;
       const serviceImage=form.serviceImage.value;
-      const providerName=form.providerName.value;
-      const providerEmail=form.providerEmail.value;
+      const providerName=username.value;
+      const providerEmail=useremail.value;
       const currentUserName=user?.displayName;
       const currentUserEmail=user?.email;
       const Date = form.date.value;

@@ -59,7 +59,7 @@ const UpdateService = () => {
           <label className="label">
             <span className="label-text"> Service Name</span>
           </label>
-          <input type="text" name="serviceName" defaultValue={name}  placeholder=" Service ID" className="input input-bordered" required />
+          <input type="text" name="serviceName" value={name}  placeholder=" Service ID" className="input input-bordered" required />
          
           
         </div>
@@ -67,7 +67,7 @@ const UpdateService = () => {
           <label className="label">
             <span className="label-text">Price</span>
           </label>
-          <input type="text" name="price" defaultValue={price}  placeholder=" Service ID" className="input input-bordered" required />
+          <input type="text" name="price" value={price}  placeholder=" Service ID" className="input input-bordered" required />
         </div>
 
     </div>
@@ -77,13 +77,13 @@ const UpdateService = () => {
           <label className="label">
             <span className="label-text"> Provider Name</span>
           </label>
-          <input type="text" name="providerName" defaultValue={username} placeholder="Provider Name" className="input input-bordered" required />
+          <input type="text" name="providerName" value={username} placeholder="Provider Name" className="input input-bordered" required />
         </div>
         <div className="form-control">
           <label className="label">
             <span className="label-text">Provider Email</span>
           </label>
-          <input type="email" name="providerEmail" defaultValue={useremail}  placeholder=" Provider Email" className="input input-bordered" required />
+          <input type="email" name="providerEmail" value={useremail}  placeholder=" Provider Email" className="input input-bordered" required />
           
         </div>
 
