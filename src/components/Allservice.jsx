@@ -1,7 +1,5 @@
-import { useContext, useEffect, useState } from "react";
+import { useState } from "react";
 import AllCard from "./AllCard";
-import { AuthContext } from "../authprovider/Authprovider";
-import axios from "axios";
 
 
 const Allservice = () => {

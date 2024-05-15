@@ -35,7 +35,7 @@ const router=createBrowserRouter ([
                 loader:({params})=>fetch(`https://beauty-and-grooming-server.vercel.app/services/${params.id}`)
             },
             {
-                path:'/service',
+                path:'/services',
                 element:<Allservice></Allservice>
             },
             {
