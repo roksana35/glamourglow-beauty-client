@@ -3,6 +3,7 @@ import { useContext, useState } from "react";
 import { useLoaderData, } from "react-router-dom";
 import { AuthContext } from "../authprovider/Authprovider";
 import { Helmet } from "react-helmet-async";
+import Swal from "sweetalert2";
 // /import { Modal } from "@headlessui/react";
 
 
@@ -40,6 +41,13 @@ const Detailspage = () => {
       .then(data=>{
         // console.log(data)
         const purchase=data;
+        if(data.insertedId){
+          Swal.fire({
+              title: "success",
+              text: "Sucessfully Booked Service",
+              icon: "success"
+            });
+      }
 
       })
     }

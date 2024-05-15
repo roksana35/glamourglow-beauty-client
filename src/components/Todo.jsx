@@ -1,58 +1,71 @@
-import { useContext } from 'react';
-import  { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 
-import { toast } from 'react-toastify';
+import { ToastContainer,toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { AuthContext } from '../authprovider/Authprovider';
 
 const Todo = () => {
-    const {user}=useContext(AuthContext);
-    const [allbooking,setAllbooking]=useState([]);
-    fetch('http://localhost:5000/purchase',{
-        method:'GET',
-    })
-    .then(res=>res.json())
-    .then(data=>{
-        
-        // console.log(data)
-        setAllbooking(data)
-    });
+    const { user } = useContext(AuthContext);
+    const [allbooking, setAllbooking] = useState([]);
 
-    const handleStatus=id=>{
-        const status=document.getElementById(`status_${id}`).value
+    const [canAccessTable, setCanAccessTable] = useState(false);
+
+    useEffect(() => {
         
-        fetch(`http://localhost:5000/updatestatus/${id}`,{
-            method:'PUT',
-            headers:{
-                'content-type':'application/json'
+            fetch(`http://localhost:5000/purchase/${user?.email}`)
+                .then(res => res.json())
+                .then(data => {
+                    setAllbooking(data);
+                    // Check if any booking's providerEmail matches the logged-in user's email
+                const hasAccess = data.some(booking => {
+                    const match = booking.providerEmail === user.email;
+                    console.log('User email:', user.email);
+                    console.log('Provider email:', booking.providerEmail);
+                    console.log('Has access:', match);
+                    return match;
+                });
+                setCanAccessTable(hasAccess);
+                })
+                .catch(error => {
+                    console.error('Error fetching data:', error);
+                    // Handle error if necessary
+                });
+        
+    }, [user]);
+
+    const handleStatus = id => {
+        const status = document.getElementById(`status_${id}`).value;
+
+        fetch(`http://localhost:5000/updatestatus/${id}`, {
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json'
             },
-            body:JSON.stringify({status:status})
+            body: JSON.stringify({ status: status })
         })
-        .then(res=>res.json())
-        .then(data=>{
-            // console.log(data)
-            if(data.modifiedCount>0){
-                toast.success('Update Status Successfully')
+        .then(res => res.json())
+        .then(data => {
+            if (data.modifiedCount > 0) {
+                toast.success('Update Status Successfully');
             }
-        }) .catch(error => {
+        })
+        .catch(error => {
             console.error('Error updating status:', error);
-            // Handle error if necessary
             toast.error('Failed to update status');
         });
-    }
+    };
 
-    const canAccessTable = allbooking.some(booking =>
-        booking.providerEmail === user?.email 
-    );
+    
 
     return (
-        
         <div>
             <Helmet>
                 <title>Service-To-Do</title>
             </Helmet>
             
-            {canAccessTable?(<div>
+            {canAccessTable ? (
+                <div>
                 <div className=" overflow-x-auto hidden md:block">
             
             <table className="table table-xs">
@@ -113,17 +126,20 @@ const Todo = () => {
             
     
           </div>
+          <ToastContainer />
 
-            </div> ):(<div className='text-2xl font-lato font-bold text-center mt-4 md:mt-24'>Access Denied</div>)}
-            
-             
-
+            </div>
+            ) : (
+                <div className='text-2xl font-lato font-bold text-center mt-4 md:mt-24'>
+                    Access Denied
+                </div>
+            )}
         </div>
-        
-       
-            
-        
     );
 };
 
 export default Todo;
+
+
+
+
