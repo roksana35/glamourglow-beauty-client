@@ -7,7 +7,7 @@ const BookingService = () => {
     const {user}=useContext(AuthContext)
     const [bookservice,setBookservice]=useState([]);
 
-    fetch(`http://localhost:5000/booking/${user?.email}`,{
+    fetch(`https://beauty-and-grooming-server.vercel.app/booking/${user?.email}`,{
         method:'GET'
     }).then(res =>res.json())
     .then(data=>{
