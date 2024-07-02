@@ -8,18 +8,17 @@ Welcome to GlamourGlow Beauty, your go-to destination for beauty services. Wheth
 * Also if you add a service ,you can edit ,delete and upadte that data of the service .Finally i will say that i have tried to keep our website user friendly.
 
 # Key Features:
-### Service Booking:Easily book beauty services and choose a date that fits your schedule.
-### Service Management:Logged-in users can add, edit, delete, and update their services.
-### Service Status:Check the status of your booked services to see if the service provider has confirmed your appointment.
-### User-Friendly Interface:Our website is designed to be intuitive and easy to navigate.
+*  Service Booking:Easily book beauty services and choose a date that fits your schedule.
+* Service Management:Logged-in users can add, edit, delete, and update their services.
+* Service Status:Check the status of your booked services to see if the service provider has confirmed your appointment.
 
 # Technologies Used:
-### React:For building a dynamic and responsive user interface.
-### Tailwind CSS: To style the website with utility-first CSS framework.
-### DaisyUI: A component library built on top of Tailwind CSS for better UI components.
-### Node.js:To handle server-side logic and operations.
-### Express.js:A minimal and flexible Node.js web application framework.
-### MongoDB:For database management and storing service details.
+* React:For building a dynamic and responsive user interface.
+* Tailwind CSS: To style the website with utility-first CSS framework.
+* DaisyUI: A component library built on top of Tailwind CSS for better UI components.
+* Node.js:To handle server-side logic and operations.
+* Express.js:A minimal and flexible Node.js web application framework.
+* MongoDB:For database management and storing service details.
 
 
 # visit: https://beauty-services-935c4.web.app/
